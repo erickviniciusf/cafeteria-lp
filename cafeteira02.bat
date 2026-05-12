@@ -16,4 +16,3 @@ if "%op%"=="2"
     node cafeteria.js 02 m
 if "%op%"=="3" 
 	node cafeteria.js 02 g
-pause
