@@ -10,8 +10,10 @@ echo.
 
 set /p op=Escolha:
 
-if "%op%"=="1" node cafeteria.js 03 p && echo %date% %time% 03 p ok >> cafeteiras.log
-if "%op%"=="2" node cafeteria.js 03 m && echo %date% %time% 03 m erro: >> cafeteiras.log
-if "%op%"=="3" node cafeteria.js 03 g && echo %date% %time% 03 g ok >> cafeteiras.log
-
+if "%op%"=="1" (
+    node cafeteria.js 03 p
+if "%op%"=="2"
+    node cafeteria.js 03 m
+if "%op%"=="3" 
+	  node cafeteria.js 03 g
 pause
