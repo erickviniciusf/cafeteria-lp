@@ -3,9 +3,9 @@ const codMaquina = process.argv[2];
 const tamanhoCafe = process.argv[3];
 
 const cafeteiras = fs.readFileSync('./cafeteiras.cad', 'utf-8');
-const quebraLinhas = cafeteiras.split('\n');
+const quebraLinhas = cafeteiras.split('\n').filter(linha => linha.trim() !== '')
 const encontrarMaquina = quebraLinhas.find(function(item) {
-    const partes = item.split(' ');
+    const partes = item.split(/\s+/);
     return partes[0] === codMaquina;
 });
 
@@ -63,7 +63,7 @@ if (!encontrarMaquina) {
     process.exit(1);
 }
 
-const partes   = encontrarMaquina.split(' ');
+const partes   = encontrarMaquina.split(' ');   
 const maquina  = new Cafeteira(partes[0], partes[1], partes[2]);
 
 const cargasNec = maquina.cargasNecessarias(tamanhoCafe);
