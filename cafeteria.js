@@ -59,8 +59,8 @@ function registrarLog(mensagem) {
 const dt = dataHoraAtual();
 
 if (!encontrarMaquina) {
-    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} erro: Máquina inexistente.`);
-    process.exit(1);
+    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} Erro: Máquina inexistente.`);
+    process.exit(3);
 }
 
 const partes   = encontrarMaquina.split(' ');   
@@ -68,14 +68,14 @@ const maquina  = new Cafeteira(partes[0], partes[1], partes[2]);
 
 const cargasNec = maquina.cargasNecessarias(tamanhoCafe);
 if (cargasNec === null) {
-    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} erro: Tamanho inválido.`);
-    process.exit(1);
+    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} Erro: Tamanho inválido.`);
+    process.exit(2);
 }
 
 if (maquina.cargas < cargasNec) {
-    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} erro: Sem pó.`);
+    registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} Erro: Sem pó.`);
     process.exit(1);
 }
-
 maquina.consumirCargas(cargasNec);
 registrarLog(`${dt} ${codMaquina} ${tamanhoCafe} ok`);
+process.exit(0);
